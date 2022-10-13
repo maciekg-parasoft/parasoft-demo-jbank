@@ -29,7 +29,7 @@ public class Bank
         }
         _logger.log(account);
         if (account.getStatus().equals(Account.STATUS_PLATINUM)) {
-            CreditCard creditCard = getCreditCard(account);
+            CreditCard creditCard = getCreditCard(account.getID(), account.getCustomer(), account.getBalance());
             account.setCreditCard(creditCard);
         }
         _accounts.put(account.getID(), account);
@@ -107,12 +107,11 @@ public class Bank
     /**
      * @jtest.factory
      */
-    public static CreditCard getCreditCard(Account account)
+    public static CreditCard getCreditCard(String accountId, Customer customer, int balance)
     {
-        Customer customer = account.getCustomer();
         String ccn = String.valueOf(Integer.toUnsignedString(customer.getName().hashCode()));
         ccn = ccn.substring(0, 4) + "-" + ccn.substring(1, 5) + "-" + ccn.substring(1, 5) + "-" + ccn.substring(0, 4);
-        return new CreditCard(account.getID(), customer, account.getBalance() / 10, ccn);
+        return new CreditCard(accountId, customer, balance + 100, ccn);
     }
 
 }
