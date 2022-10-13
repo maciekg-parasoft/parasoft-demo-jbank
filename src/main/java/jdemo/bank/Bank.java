@@ -49,18 +49,18 @@ public class Bank
 
     public Account getAccount(String id, String name)
     {
-        Account userAccount = null;
+        Account account = null;
         if (_accounts.size() > 0) {
-            userAccount = (Account)_accounts.get(id);
+            account = (Account)_accounts.get(id);
         }
-        if ((userAccount != null) && !name.equals(userAccount.getCustomer().getName())) {
+        if ((account != null) && !name.equals(account.getCustomer().getName())) {
             // account wrong if account number does not match
-            userAccount = null;
+            account = null;
         }
-        if (userAccount != null) {
-            _logger.log(userAccount);
+        if (account != null) {
+            _logger.log(account);
         }
-        return userAccount;
+        return account;
     }
 
     public Boolean isMaintenanceMode()

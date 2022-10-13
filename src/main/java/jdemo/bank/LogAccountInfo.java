@@ -44,12 +44,14 @@ public class LogAccountInfo
         {
             int balance = _account.getBalance();
             String id = _account.getID();
+            PrintWriter out = null;
             try {
-                PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(_file, true)));
+                out = new PrintWriter(new BufferedWriter(new FileWriter(_file, true)));
                 out.println(id + " " + balance);
-                out.close();
             } catch (IOException ioe) {
                 System.err.println(ioe.getMessage());
+            } finally {
+                out.close();	
             }
         }
     }
