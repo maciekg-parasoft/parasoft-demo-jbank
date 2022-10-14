@@ -61,7 +61,7 @@ public class Customer
     }
 
     /**
-     * @param _zipcode The _zipcode to set.
+     * @param zipcode The _zipcode to set.
      */
     public void setZipcode(String zipcode)
     {
@@ -104,6 +104,12 @@ public class Customer
         } catch (SQLException sqle) {
             System.err.println("Cannot connect to database: " + sqle.getMessage());
             throw new ConnectionException("Connection Failed");
+        } finally {
+        	try {
+				connection.close();
+			} catch (SQLException sqle) {
+				System.err.println("Cannot close connection to database: " + connection);
+			}
         }
         try {
             statement = connection.prepareStatement("select * from accounts where id=" + _socialSecurityNumber);
