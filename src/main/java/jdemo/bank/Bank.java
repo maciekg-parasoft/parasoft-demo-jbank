@@ -78,7 +78,7 @@ public class Bank
         BankState.endMaintenance();
     }
 
-    public static void setAccountsLimit(Integer limit)
+    public void setAccountsLimit(Integer limit)
     {
         ACCOUNTS_LIMIT = limit;
     }
@@ -94,8 +94,8 @@ public class Bank
     }
     
     /**
-     * @jtest.factory
-     */
+	 * @jtest.factory
+	 */
     public static Customer genCustomer(String name)
     {
         String snn = String.valueOf(Integer.toUnsignedString(name.hashCode()));
@@ -105,8 +105,8 @@ public class Bank
     }
     
     /**
-     * @jtest.factory
-     */
+	 * @jtest.factory
+	 */
     public static CreditCard getCreditCard(String accountId, Customer customer, int balance)
     {
         String ccn = String.valueOf(Integer.toUnsignedString(customer.getName().hashCode()));

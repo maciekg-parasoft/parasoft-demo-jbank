@@ -74,10 +74,10 @@ public class Customer
     }
 
     @Override
-    public boolean equals(Object o)
+    public boolean equals(Object object)
     {
-        if (o instanceof Customer) {
-            Customer cust = (Customer)o;
+        if (object instanceof Customer) {
+            Customer cust = (Customer)object;
             if (_name.equals(cust.getName())) {
                 if (_socialSecurityNumber.equals(cust.getSSN())) {
                     return true;
